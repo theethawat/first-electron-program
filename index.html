@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Theethawat Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="alert alert-primary" role="alert">
+            <h2 class="kanit acenter">Theethawat's Time Convertion Application</h2>
+        </div>
+        
+         <h5 class="kanit acenter">เวลาในประเทศไทย</h5>
+
+         <h6 class="kanit acenter" id="thaitime">แสดงเวลาในประเทศไทย</h6>
+         <script>
+            var time = new Date();
+            document.getElementById("thaitime").innerHTML = time;
+           </script>
+
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-primary kanit" onclick="uktime()">แปลงเป็นเวลาสหราชอาณาจักร</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary kanit" onclick="cntime()">แปลงเป็นเวลาจีน(กรุงปักกิ่ง)</button>
+              </div>
+            <div class="col">
+                <button class="btn btn-primary kanit" onclick="jptime()">แปลงเป็นเวลาญี่ปุ่น</button>
+              </div>
+          </div>
+          <br>
+          <h4 class="kanit acenter" id="showtime">แสดงเวลาในต่างประเทศที่เลือก</h4>
+          <script>
+            function uktime(){
+              var time = new Date();
+              var hr_th = time.getHours();
+              var mi_th = time.getMinutes();
+              var new_hr_uk = hr_th - 6;
+              var new_mi_uk = mi_th;
+              if(new_hr_uk < 0){
+                new_hr_uk = 24 + new_hr_uk;
+              }
+              document.getElementById("showtime").innerHTML= new_hr_uk + ":" + new_mi_uk;
+            }
+            function cntime(){
+              var time = new Date();
+              var hr_th = time.getHours();
+              var mi_th = time.getMinutes();
+              var new_hr_cn = hr_th + 1;
+              var new_mi_cn = mi_th;
+              if(new_hr_cn > 24){
+                new_hr_cn = new_hr_cn - 24;
+              }
+              document.getElementById("showtime").innerHTML= new_hr_cn + ":" + new_mi_cn;
+            }
+            function jptime(){
+              var time = new Date();
+              var hr_th = time.getHours();
+              var mi_th = time.getMinutes();
+              var new_hr_jp = hr_th + 2;
+              var new_mi_jp = mi_th;
+              if(new_hr_jp > 24){
+                new_hr_jp = new_hr_jp - 24;
+              }
+              document.getElementById("showtime").innerHTML= new_hr_jp + ":" + new_mi_jp;
+            }
+          </script>
+          <br>
+           <h6 class = "kanit acenter">นายธีร์ธวัช สวาสดิ์ธรรม 5910110150 Section 02</h6>
+           <hr>
+        <!-- All of the Node.js APIs are available in this renderer process. -->
+          We are using Node.js <script>document.write(process.versions.node)</script>,
+          Chromium <script>document.write(process.versions.chrome)</script>,
+          and Electron <script>document.write(process.versions.electron)</script>.
+    </div>
+   
+
+    <script>
+      // You can also require other files to run in this process
+      
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
